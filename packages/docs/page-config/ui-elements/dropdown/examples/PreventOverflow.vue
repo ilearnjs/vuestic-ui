@@ -13,7 +13,6 @@
         trigger="none"
         placement="top"
         target=".demo-viewport"
-        prevent-overflow
       >
         <div class="demo-square" />
 
