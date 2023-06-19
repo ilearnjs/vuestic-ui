@@ -31,8 +31,6 @@ export const useDropdown = (
     return `${position.value}-${align.value}` as Placement
   })
 
-  console.log('placementComputed', placementComputed.value)
-
   const offsetComputed = computed(() => {
     const dropdownOffset = options.value.offset
     const result = { mainAxis: 0, crossAxis: 0 }
@@ -58,7 +56,7 @@ export const useDropdown = (
       result.push(
         // boundary doesn't work with ssr (trying to access document)
         flip({
-          boundary: typeof document === undefined ? target.value : undefined,
+          boundary: typeof document === undefined ? undefined : target.value,
         }),
       )
     }
