@@ -6,6 +6,7 @@
       v-model="valueComputed"
       :tabindex="tabIndexComputed"
       :disabled="$props.disabled"
+      :label="label"
     >
       <template #appendInner>
         <va-color-indicator
@@ -58,6 +59,7 @@ export default defineComponent({
       validator: (value: string) => ['dot', 'square'].includes(value),
     },
     ariaOpenColorPickerLabel: { type: String, default: '$t:openColorPicker' },
+    label: { type: String, default: '' },
   },
   setup: (props, { emit }) => {
     const colorPicker = shallowRef<HTMLInputElement>()

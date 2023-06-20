@@ -223,7 +223,7 @@ export default defineComponent({
     autoSelectFirstOption: { type: Boolean, default: false },
 
     // Input style
-    outline: { type: Boolean, default: false },
+    outline: { type: Boolean, default: true },
     bordered: { type: Boolean, default: false },
     label: { type: String, default: '' },
     placeholder: { type: String, default: '' },

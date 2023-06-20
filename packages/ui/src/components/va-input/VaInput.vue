@@ -142,7 +142,7 @@ export default defineComponent({
     // style
     color: { type: String, default: 'primary' },
     background: { type: String, default: 'background-element' },
-    outline: { type: Boolean, default: false },
+    outline: { type: Boolean, default: true },
     bordered: { type: Boolean, default: false },
     requiredMark: { type: Boolean, default: false },
     ariaResetLabel: { type: String, default: '$t:reset' },

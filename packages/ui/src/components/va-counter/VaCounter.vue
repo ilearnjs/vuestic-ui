@@ -159,7 +159,7 @@ export default defineComponent({
     // style
     width: { type: [String, Number], default: '160px' },
     color: { type: String, default: 'primary' },
-    outline: { type: Boolean },
+    outline: { type: Boolean, default: true },
     bordered: { type: Boolean },
     // icons & buttons
     increaseIcon: { type: String, default: 'add' },

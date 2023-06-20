@@ -11,6 +11,7 @@
     </VbCard>
     <VbCard title="Color Input (stateful)">
       <va-color-input
+        label="123"
         modelValue="#fff000"
         stateful
       />

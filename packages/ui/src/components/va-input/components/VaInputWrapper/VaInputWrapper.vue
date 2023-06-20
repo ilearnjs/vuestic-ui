@@ -5,6 +5,20 @@
     :style="wrapperStyle"
     @click="$emit('click', $event)"
   >
+    <label
+      v-if="label"
+      aria-hidden="true"
+      class="va-input-wrapper__label"
+      :style="{ color: colorComputed }"
+    >
+      {{ label }}
+      <span
+        v-if="requiredMark"
+        class="va-input-wrapper__required-mark"
+      >
+          *
+        </span>
+    </label>
     <div class="va-input-wrapper__container">
       <div
         v-if="$slots.prepend"
@@ -26,21 +40,6 @@
         </div>
 
         <div class="va-input-wrapper__text">
-          <label
-            v-if="label"
-            aria-hidden="true"
-            class="va-input-wrapper__label"
-            :style="{ color: colorComputed }"
-          >
-            {{ label }}
-            <span
-              v-if="requiredMark"
-              class="va-input-wrapper__required-mark"
-            >
-              *
-            </span>
-          </label>
-
           <slot />
         </div>
 
@@ -128,7 +127,7 @@ export default defineComponent({
     label: { type: String, default: '' },
     color: { type: String, default: 'primary' },
     background: { type: String, default: 'background-element' },
-    outline: { type: Boolean, default: false },
+    outline: { type: Boolean, default: true },
     bordered: { type: Boolean, default: false },
     focused: { type: Boolean, default: false },
     error: { type: Boolean, default: false },
@@ -365,8 +364,8 @@ export default defineComponent({
   // styles
   &--labeled {
     .va-input-wrapper__text {
-      height: 100%;
-      padding-top: 12px;
+      //height: 100%;
+      //padding-top: 12px;
       box-sizing: content-box;
     }
 
@@ -374,9 +373,10 @@ export default defineComponent({
       @include va-ellipsis();
 
       height: 12px;
-      position: absolute;
-      left: 0;
-      top: 0;
+      margin-bottom: 4px;
+      //position: absolute;
+      //left: 0;
+      //top: 0;
       display: flex;
       padding-top: 1px;
       max-width: var(--va-input-container-label-max-width);
@@ -403,7 +403,7 @@ export default defineComponent({
 
   &--outline {
     .va-input-wrapper__field {
-      border-radius: 0;
+      border-radius: var(--va-input-border-radius);
     }
   }
 
