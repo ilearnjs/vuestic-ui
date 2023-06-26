@@ -6,7 +6,7 @@
     @click="$emit('click', $event)"
   >
     <label
-      v-if="label"
+      v-if="label && !labelInside"
       aria-hidden="true"
       class="va-input-wrapper__label"
       :style="{ color: colorComputed }"
@@ -40,6 +40,21 @@
         </div>
 
         <div class="va-input-wrapper__text">
+          <label
+            v-if="label && labelInside"
+            aria-hidden="true"
+            class="va-input-wrapper__label"
+            :style="{ color: colorComputed }"
+          >
+            {{ label }}
+            <span
+              v-if="requiredMark"
+              class="va-input-wrapper__required-mark"
+            >
+              *
+            </span>
+          </label>
+
           <slot />
         </div>
 
@@ -125,6 +140,7 @@ export default defineComponent({
     maxLength: { type: Number, default: undefined },
 
     label: { type: String, default: '' },
+    labelInside: { type: Boolean, default: false },
     color: { type: String, default: 'primary' },
     background: { type: String, default: 'background-element' },
     outline: { type: Boolean, default: true },
@@ -150,6 +166,7 @@ export default defineComponent({
     const wrapperClass = useBem('va-input-wrapper', () => ({
       ...pick(props, ['outline', 'bordered', 'success', 'focused', 'error', 'disabled', 'readonly']),
       labeled: !!props.label,
+      labeledInside: !!props.labelInside,
       solid: !props.outline && !props.bordered,
     }))
 
@@ -364,8 +381,6 @@ export default defineComponent({
   // styles
   &--labeled {
     .va-input-wrapper__text {
-      //height: 100%;
-      //padding-top: 12px;
       box-sizing: content-box;
     }
 
@@ -374,9 +389,6 @@ export default defineComponent({
 
       height: 12px;
       margin-bottom: 4px;
-      //position: absolute;
-      //left: 0;
-      //top: 0;
       display: flex;
       padding-top: 1px;
       max-width: var(--va-input-container-label-max-width);
@@ -390,6 +402,19 @@ export default defineComponent({
 
     textarea {
       margin-top: 0;
+    }
+  }
+
+  &--labeled-inside {
+    .va-input-wrapper__text {
+      height: 100%;
+      padding-top: 12px;
+    }
+
+    .va-input-wrapper__label {
+      position: absolute;
+      left: 0;
+      top: 0;
     }
   }
 

@@ -15,6 +15,7 @@
     :error-messages="computedErrorMessages"
     :error-count="errorCount"
     :label="$props.label"
+    :label-inside="$props.labelInside"
     :bordered="$props.bordered"
     :outline="$props.outline"
     :requiredMark="$props.requiredMark"
@@ -130,6 +131,7 @@ export default defineComponent({
     tabindex: { type: [String, Number], default: 0 },
     modelValue: { type: [String, Number] },
     label: { type: String, default: '' },
+    labelInside: { type: Boolean, default: false },
     type: { type: String as AnyStringPropType<'textarea' | 'text' | 'password'>, default: 'text' },
     loading: { type: Boolean, default: false },
     inputClass: { type: String, default: '' },
